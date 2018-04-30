@@ -1741,7 +1741,7 @@ class Functiontests(casadiTestCase):
     gmap = g.map(2, "thread", 2)
     gmapsx = gmap.expand()
 
-    q = gmap(horzcat(2*x,x-y[1]),horzcat(z+y,cos(z+y)))+1/gmapsx(horzcat(2*x,x-y[1]),horzcat(z+y,cos(z+y)))
+    q = gmap(horzcat(2*x,x-y[1]),horzcat(z+y,cos(z+y)))+1/gmapsx(horzcat(2*x,x-y[1]),repmat(z+y,1,2))
 
     q = solve(q,2*y,"lapackqr")
     q+= bilin(DM([[1,3],[7,8]]),q,2*q)
